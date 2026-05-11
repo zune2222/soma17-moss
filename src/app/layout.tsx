@@ -5,10 +5,6 @@ export const metadata: Metadata = {
   title: "Moss | Less hassle, tiny delights, fine details",
   description:
     "귀찮음을 끝까지 추적하고, 사소한 순간에 진심을 다하는 제품 팀 Moss.",
-  icons: {
-    icon: "/moss/moss-logo-transparent.png",
-    apple: "/moss/moss-logo-transparent.png",
-  },
 };
 
 export default function RootLayout({
