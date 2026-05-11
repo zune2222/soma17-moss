@@ -2,9 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Moss | Less hassle, tiny delights, fine details",
-  description:
-    "귀찮음을 끝까지 추적하고, 사소한 순간에 진심을 다하는 제품 팀 Moss.",
+  metadataBase: new URL("https://soma17-moss.vercel.app"),
+  title: "Moss",
+  description: "사용자는 가볍게, 우리는 집요하게 만들어요.",
+  openGraph: {
+    title: "Moss",
+    description: "사용자는 가볍게, 우리는 집요하게 만들어요.",
+    url: "/",
+    siteName: "Moss",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Moss",
+    description: "사용자는 가볍게, 우리는 집요하게 만들어요.",
+  },
 };
 
 export default function RootLayout({
