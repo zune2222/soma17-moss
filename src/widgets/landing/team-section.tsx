@@ -22,8 +22,6 @@ type TeamMember = {
   competencies: string[];
   detail: {
     lead: string;
-    strengths: string[];
-    workingStyle: string;
   };
   selfIntro?: {
     basics: { label: string; value: string }[];
@@ -44,8 +42,6 @@ const teamMembers: TeamMember[] = [
     competencies: ["프론트엔드", "AI 서빙", "AI 에이전트", "실사용자 유치"],
     detail: {
       lead: "데모에 머무르지 않고, 실제 사람이 쓰는 AI 서비스를 만드는 쪽에 강해요.",
-      strengths: ["프론트엔드와 AI 서빙 사이의 빈틈을 줄여요", "AI 에이전트를 실제 사용자 흐름에 붙여요", "초기 사용자를 데려오고 반응으로 서비스를 고쳐요"],
-      workingStyle: "귀찮은 게 싫어서, 귀찮음을 없애는 더 귀찮은 일을 먼저 해요.",
     },
     selfIntro: {
       basics: [
@@ -110,8 +106,6 @@ const teamMembers: TeamMember[] = [
     competencies: ["백엔드", "관계 조율", "활동력", "기회 연결"],
     detail: {
       lead: "서버와 데이터 흐름을 챙기면서, 팀 밖의 사람과 기회를 자연스럽게 Moss 쪽으로 끌어와요.",
-      strengths: ["백엔드 흐름을 설계하고 안정화해요", "파트너와 사용자 접점을 만들어요", "필요한 사람을 모으고 분위기를 살려요"],
-      workingStyle: "사소한 순간에 진심을 다하고, 관계가 필요한 순간에는 먼저 움직여요.",
     },
   },
   {
@@ -122,8 +116,6 @@ const teamMembers: TeamMember[] = [
     competencies: ["정교함", "데이터 흐름", "예외 처리", "안정성"],
     detail: {
       lead: "데이터가 오가는 길, 조건이 갈라지는 순간, 겉으로 잘 보이지 않는 예외를 꼼꼼히 챙겨요.",
-      strengths: ["놓치기 쉬운 예외 조건을 발견해요", "데이터 흐름의 작은 불일치를 끝까지 따라가요", "조용하지만 오래 가는 안정성을 만들어요"],
-      workingStyle: "사용자가 의식하지 못한 채 믿고 쓰는 상태를 좋아해요.",
     },
   },
 ];
@@ -210,23 +202,6 @@ export function TeamSection() {
                       </div>
                     </div>
 
-                    <div className="mt-7">
-                      <p className="moss-section-label">잘하는 것</p>
-                      <ul className="mt-4 space-y-3 text-base leading-7 text-[var(--muted-ink)]">
-                        {member.detail.strengths.map((strength) => (
-                          <li key={strength} className="border-l border-[var(--line-strong)] pl-4">
-                            {strength}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mt-7">
-                      <p className="moss-section-label">일하는 방식</p>
-                      <p className="mt-4 text-base leading-7 text-[var(--muted-ink)]">
-                        {member.detail.workingStyle}
-                      </p>
-                    </div>
                     {member.selfIntro ? <SelfIntroContent intro={member.selfIntro} /> : null}
                   </div>
                 </div>
