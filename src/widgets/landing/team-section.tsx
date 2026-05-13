@@ -164,6 +164,33 @@ const teamMembers: TeamMember[] = [
     detail: {
       lead: "데이터가 오가는 길, 조건이 갈라지는 순간, 겉으로 잘 보이지 않는 예외를 꼼꼼히 챙겨요.",
     },
+    selfIntro: {
+      basics: [
+        { label: "이름", value: "김상호" },
+        { label: "나이", value: "23살" },
+        { label: "학력", value: "단국대학교 소프트웨어학과 휴학" },
+      ],
+      soma: [
+        {
+          title: "소마에서 얻고 싶은 것",
+          body: "실서비스 개발과 수익화 경험을 통해 기술을 실제 사용자 가치로 연결하는 방법을 배우고 싶어요. 팀 협업과 빠른 실행, 검증을 경험하며 장기적으로 창업까지 이어질 수 있는 역량을 만들고 싶어요.",
+        },
+        {
+          title: "소마에 사용할 시간",
+          body: "현재 휴학 중이고 센터 인근에 거주하고 있어, 프로젝트와 협업에 우선순위를 두고 시간을 집중적으로 사용할 수 있어요.",
+        },
+      ],
+      careers: [],
+      projects: [
+        {
+          title: "THAD",
+          body: "Talking Head AI Detector. AI로 생성된 talking head 영상을 탐지하는 프로젝트예요.",
+        },
+      ],
+      awards: [],
+      education:
+        "단국대학교 경제학과 · 2024.03 - 2024.12 / 단국대학교 소프트웨어학과 · 2025.03 - 2025.12",
+    },
   },
 ];
 
@@ -285,16 +312,18 @@ function SelfIntroContent({
         ))}
       </IntroGroup>
 
-      <IntroGroup title="경력">
-        {intro.careers.map((career) => (
-          <IntroItem
-            key={career.title}
-            title={career.title}
-            meta={career.meta}
-            body={career.body}
-          />
-        ))}
-      </IntroGroup>
+      {intro.careers.length > 0 ? (
+        <IntroGroup title="경력">
+          {intro.careers.map((career) => (
+            <IntroItem
+              key={career.title}
+              title={career.title}
+              meta={career.meta}
+              body={career.body}
+            />
+          ))}
+        </IntroGroup>
+      ) : null}
 
       <IntroGroup title="프로젝트">
         {intro.projects.map((project) => (
@@ -307,15 +336,17 @@ function SelfIntroContent({
         ))}
       </IntroGroup>
 
-      <IntroGroup title="수상">
-        <ul className="space-y-3 text-sm leading-6 text-[var(--muted-ink)]">
-          {intro.awards.map((award) => (
-            <li key={award} className="border-l border-[var(--line-strong)] pl-3">
-              {award}
-            </li>
-          ))}
-        </ul>
-      </IntroGroup>
+      {intro.awards.length > 0 ? (
+        <IntroGroup title="수상">
+          <ul className="space-y-3 text-sm leading-6 text-[var(--muted-ink)]">
+            {intro.awards.map((award) => (
+              <li key={award} className="border-l border-[var(--line-strong)] pl-3">
+                {award}
+              </li>
+            ))}
+          </ul>
+        </IntroGroup>
+      ) : null}
 
       <IntroGroup title="학력">
         <p className="text-sm leading-6 text-[var(--muted-ink)]">{intro.education}</p>
