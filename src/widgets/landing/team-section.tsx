@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
+import { Button } from "@/shared/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -17,6 +19,7 @@ type TeamMember = {
   role: string;
   initials: string;
   photo?: string;
+  profileHref?: string;
   oneLine: string;
   competencies: string[];
   detail: {
@@ -31,6 +34,7 @@ const teamMembers: TeamMember[] = [
     name: "박준이",
     role: "AI Service Builder",
     initials: "PJ",
+    profileHref: "/juni",
     oneLine: "프론트엔드부터 AI 서빙, AI 에이전트, 실사용자 유치까지 서비스의 끝을 잡아요.",
     competencies: ["프론트엔드", "AI 서빙", "AI 에이전트", "실사용자 유치"],
     detail: {
@@ -163,6 +167,17 @@ export function TeamSection() {
                       <p className="mt-4 text-base leading-7 text-[var(--muted-ink)]">
                         {member.detail.workingStyle}
                       </p>
+                      {member.profileHref ? (
+                        <Button
+                          asChild
+                          className="mt-6 h-11 rounded-[14px] bg-[var(--ink)] px-4 text-[var(--paper)] hover:bg-[var(--moss-dark)]"
+                        >
+                          <Link href={member.profileHref}>
+                            자기소개 보기
+                            <ArrowUpRight aria-hidden="true" />
+                          </Link>
+                        </Button>
+                      ) : null}
                     </div>
                   </div>
                 </div>
