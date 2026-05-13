@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 
-import { Button } from "@/shared/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -19,13 +18,20 @@ type TeamMember = {
   role: string;
   initials: string;
   photo?: string;
-  profileHref?: string;
   oneLine: string;
   competencies: string[];
   detail: {
     lead: string;
     strengths: string[];
     workingStyle: string;
+  };
+  selfIntro?: {
+    basics: { label: string; value: string }[];
+    soma: { title: string; body: string }[];
+    careers: { title: string; meta: string; body: string }[];
+    projects: { title: string; body: string }[];
+    awards: string[];
+    education: string;
   };
 };
 
@@ -34,13 +40,66 @@ const teamMembers: TeamMember[] = [
     name: "박준이",
     role: "AI Service Builder",
     initials: "PJ",
-    profileHref: "/juni",
     oneLine: "프론트엔드부터 AI 서빙, AI 에이전트, 실사용자 유치까지 서비스의 끝을 잡아요.",
     competencies: ["프론트엔드", "AI 서빙", "AI 에이전트", "실사용자 유치"],
     detail: {
       lead: "데모에 머무르지 않고, 실제 사람이 쓰는 AI 서비스를 만드는 쪽에 강해요.",
       strengths: ["프론트엔드와 AI 서빙 사이의 빈틈을 줄여요", "AI 에이전트를 실제 사용자 흐름에 붙여요", "초기 사용자를 데려오고 반응으로 서비스를 고쳐요"],
       workingStyle: "귀찮은 게 싫어서, 귀찮음을 없애는 더 귀찮은 일을 먼저 해요.",
+    },
+    selfIntro: {
+      basics: [
+        { label: "이름", value: "박준이" },
+        { label: "나이", value: "24세" },
+        { label: "학력", value: "부산대학교, 2027년 2월 졸업 예정" },
+      ],
+      soma: [
+        {
+          title: "소마에서 얻고 싶은 것",
+          body: "아이디어를 데모로 끝내지 않고, 실제 사용자 만족과 매출까지 이어지는 AI 서비스 성장 경험을 얻고 싶어요.",
+        },
+        {
+          title: "소마에 사용할 시간",
+          body: "제품 검증, 개발, 사용자 유치에 시간을 우선 배치하고 빠르게 만들고 반응을 보며 고칠게요.",
+        },
+      ],
+      careers: [
+        {
+          title: "ABlock",
+          meta: "Frontend Engineer · 2021.11 - 2022.06",
+          body: "React Native 앱의 지도 렌더링과 네트워크 요청을 최적화했어요.",
+        },
+        {
+          title: "에버스톤(EVST)",
+          meta: "현장실습 · 2024.12 - 2025.07",
+          body: "K-Lingo 한국어 학습 앱을 React Native와 Firebase로 개발하고 스토어 출시에 참여했어요.",
+        },
+      ],
+      projects: [
+        {
+          title: "PNU Blace",
+          body: "부산대 도서관 데이터 소통 플랫폼. 성능 최적화와 실시간 좌석 UX를 맡았어요.",
+        },
+        {
+          title: "Katter",
+          body: "군인과 연인을 위한 편지 서비스 앱. React Native와 Firebase로 출시까지 진행했어요.",
+        },
+        {
+          title: "Glue",
+          body: "언어 교환 모임 매칭 앱. 실시간 채팅과 백엔드 협업 구조를 경험했어요.",
+        },
+        {
+          title: "eatPnu",
+          body: "부산대 맛집 추천 웹서비스. 사용자 866명, 페이지뷰 8,414회를 기록했어요.",
+        },
+      ],
+      awards: [
+        "BNK 금융그룹 디지털 혁신 챌린지 해커톤 2025 최우수상",
+        "2024 블록체인 ESG 해커톤 최우수상",
+        "2021 부산 ICT 융합 해카톤 일반부 대상",
+        "2019 한국 메이커 & 코딩 경진대회 메이커 부문 대상",
+      ],
+      education: "부산대학교 재학 · SW특기자 전형 입학 · 2027년 2월 졸업 예정",
     },
   },
   {
@@ -167,18 +226,8 @@ export function TeamSection() {
                       <p className="mt-4 text-base leading-7 text-[var(--muted-ink)]">
                         {member.detail.workingStyle}
                       </p>
-                      {member.profileHref ? (
-                        <Button
-                          asChild
-                          className="mt-6 h-11 rounded-[14px] bg-[var(--ink)] px-4 text-[var(--paper)] hover:bg-[var(--moss-dark)]"
-                        >
-                          <Link href={member.profileHref}>
-                            자기소개 보기
-                            <ArrowUpRight aria-hidden="true" />
-                          </Link>
-                        </Button>
-                      ) : null}
                     </div>
+                    {member.selfIntro ? <SelfIntroContent intro={member.selfIntro} /> : null}
                   </div>
                 </div>
               </DialogContent>
@@ -187,6 +236,101 @@ export function TeamSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function SelfIntroContent({
+  intro,
+}: {
+  intro: NonNullable<TeamMember["selfIntro"]>;
+}) {
+  return (
+    <div className="mt-8 border-t border-[var(--line-strong)] pt-7">
+      <p className="moss-section-label">자기소개</p>
+
+      <div className="mt-4 grid gap-px overflow-hidden border-y border-[var(--line-strong)] bg-[var(--line-strong)] sm:grid-cols-3">
+        {intro.basics.map((item) => (
+          <div key={item.label} className="bg-[var(--paper)] p-4">
+            <p className="moss-section-label">{item.label}</p>
+            <p className="mt-2 text-base font-black leading-snug">{item.value}</p>
+          </div>
+        ))}
+      </div>
+
+      <IntroGroup title="SOMA에서">
+        {intro.soma.map((item) => (
+          <IntroItem key={item.title} title={item.title} body={item.body} />
+        ))}
+      </IntroGroup>
+
+      <IntroGroup title="경력">
+        {intro.careers.map((career) => (
+          <IntroItem
+            key={career.title}
+            title={career.title}
+            meta={career.meta}
+            body={career.body}
+          />
+        ))}
+      </IntroGroup>
+
+      <IntroGroup title="프로젝트">
+        {intro.projects.map((project) => (
+          <IntroItem key={project.title} title={project.title} body={project.body} />
+        ))}
+      </IntroGroup>
+
+      <IntroGroup title="수상">
+        <ul className="space-y-3 text-sm leading-6 text-[var(--muted-ink)]">
+          {intro.awards.map((award) => (
+            <li key={award} className="border-l border-[var(--line-strong)] pl-3">
+              {award}
+            </li>
+          ))}
+        </ul>
+      </IntroGroup>
+
+      <IntroGroup title="학력">
+        <p className="text-sm leading-6 text-[var(--muted-ink)]">{intro.education}</p>
+      </IntroGroup>
+    </div>
+  );
+}
+
+function IntroGroup({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="mt-7 border-t border-[var(--line-strong)] pt-6">
+      <p className="moss-section-label">{title}</p>
+      <div className="mt-4 space-y-4">{children}</div>
+    </section>
+  );
+}
+
+function IntroItem({
+  title,
+  meta,
+  body,
+}: {
+  title: string;
+  meta?: string;
+  body: string;
+}) {
+  return (
+    <article className="grid gap-2 sm:grid-cols-[150px_minmax(0,1fr)]">
+      <div>
+        <p className="font-black leading-snug">{title}</p>
+        {meta ? (
+          <p className="mt-1 text-xs font-semibold text-[var(--moss)]">{meta}</p>
+        ) : null}
+      </div>
+      <p className="text-sm leading-6 text-[var(--muted-ink)]">{body}</p>
+    </article>
   );
 }
 
