@@ -4,10 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://soma17-moss.vercel.app"),
   title: "Moss",
-  description: "번거로움은 줄이고, 작은 순간은 오래 남기는 팀",
+  description: "번거로움은 줄이고, 소중한 순간은 오래 남기는 팀",
   openGraph: {
     title: "Moss",
-    description: "번거로움은 줄이고, 작은 순간은 오래 남기는 팀",
+    description: "번거로움은 줄이고, 소중한 순간은 오래 남기는 팀",
     url: "/",
     siteName: "Moss",
     locale: "ko_KR",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Moss",
-    description: "번거로움은 줄이고, 작은 순간은 오래 남기는 팀",
+    description: "번거로움은 줄이고, 소중한 순간은 오래 남기는 팀",
   },
 };
 
