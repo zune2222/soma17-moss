@@ -27,7 +27,7 @@ type TeamMember = {
     basics: { label: string; value: string }[];
     soma: { title: string; body: string }[];
     careers: { title: string; meta: string; body: string }[];
-    projects: { title: string; body: string }[];
+    projects: { title: string; body: string; href?: string }[];
     awards: string[];
     education: string;
   };
@@ -106,6 +106,53 @@ const teamMembers: TeamMember[] = [
     competencies: ["백엔드", "관계 조율", "활동력", "기회 연결"],
     detail: {
       lead: "서버와 데이터 흐름을 챙기면서, 팀 밖의 사람과 기회를 자연스럽게 Moss 쪽으로 끌어와요.",
+    },
+    selfIntro: {
+      basics: [
+        { label: "이름", value: "김동인" },
+        { label: "나이", value: "24살" },
+        { label: "학력", value: "부산대학교 정보컴퓨터공학부 졸업" },
+      ],
+      soma: [
+        {
+          title: "소마에서 얻고 싶은 것",
+          body: "취업을 안 해도 될 만큼의 용기, 그리고 부를 얻고 싶어요.",
+        },
+        {
+          title: "소마에 사용할 시간",
+          body: "병행하는 활동은 없습니다. 24/7, 올해는 소마에 올인합니다.",
+        },
+      ],
+      careers: [
+        {
+          title: "백엔드 인턴",
+          meta: "외주 및 스타트업 · 1년",
+          body: "실제 요구사항을 받아 서버를 만들고 운영 흐름을 맞춰본 경험이 있어요.",
+        },
+        {
+          title: "Apptive 회장",
+          meta: "교내 최대 규모 IT 동아리 · 1년",
+          body: "조직을 운영하고 사람을 모으며 프로젝트가 굴러가게 만드는 일을 맡았어요. https://apptive.notion.site/",
+        },
+      ],
+      projects: [
+        {
+          title: "SpeakNote",
+          body: "대학 수업에서 사용하는 학습 보조 플랫폼. 프론트엔드와 백엔드를 함께 개발했어요.",
+          href: "https://speaknote.site/",
+        },
+        {
+          title: "AI Company",
+          body: "AI 에이전트로만 운영되는 회사 시스템을 구축했어요.",
+          href: "https://github.com/PNU-attention/ai_company",
+        },
+      ],
+      awards: [
+        "제10회 AI·SW 융합 해커톤 일반부 최우수상(1등)",
+        "PNU × Upstage: Document Challenge 2025 최우수상(1등)",
+        "SW중심대학 마일스톤 SW전문인재S 장학생(1등) 선발",
+      ],
+      education: "2026년 2월 부산대학교 정보컴퓨터공학부 졸업",
     },
   },
   {
@@ -251,7 +298,12 @@ function SelfIntroContent({
 
       <IntroGroup title="프로젝트">
         {intro.projects.map((project) => (
-          <IntroItem key={project.title} title={project.title} body={project.body} />
+          <IntroItem
+            key={project.title}
+            title={project.title}
+            body={project.body}
+            href={project.href}
+          />
         ))}
       </IntroGroup>
 
@@ -291,15 +343,29 @@ function IntroItem({
   title,
   meta,
   body,
+  href,
 }: {
   title: string;
   meta?: string;
   body: string;
+  href?: string;
 }) {
   return (
     <article className="grid gap-2 sm:grid-cols-[150px_minmax(0,1fr)]">
       <div>
-        <p className="font-black leading-snug">{title}</p>
+        {href ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 font-black leading-snug text-[var(--ink)] underline decoration-[var(--line-strong)] underline-offset-4 transition-colors hover:text-[var(--moss)]"
+          >
+            {title}
+            <ArrowUpRight aria-hidden="true" className="size-3.5" />
+          </a>
+        ) : (
+          <p className="font-black leading-snug">{title}</p>
+        )}
         {meta ? (
           <p className="mt-1 text-xs font-semibold text-[var(--moss)]">{meta}</p>
         ) : null}
