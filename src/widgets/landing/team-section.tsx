@@ -25,6 +25,7 @@ type TeamMember = {
   };
   selfIntro?: {
     basics: { label: string; value: string }[];
+    notionUrl?: string;
     soma: { title: string; body: string }[];
     careers: { title: string; meta: string; body: string }[];
     projects: { title: string; body: string; href?: string }[];
@@ -34,44 +35,6 @@ type TeamMember = {
 };
 
 const teamMembers: TeamMember[] = [
-  {
-    name: "김상호",
-    role: "Backend Precision",
-    initials: "KS",
-    photo: "/team/kim-sangho.jpg",
-    oneLine: "데이터 흐름과 예외를 차분히 따라가며, 작은 불안정성을 놓치지 않아요.",
-    competencies: ["정교함", "데이터 흐름", "예외 처리", "안정성"],
-    detail: {
-      lead: "데이터가 오가는 길, 조건이 갈라지는 순간, 겉으로 잘 보이지 않는 예외를 꼼꼼히 챙겨요.",
-    },
-    selfIntro: {
-      basics: [
-        { label: "이름", value: "김상호" },
-        { label: "나이", value: "23살" },
-        { label: "학력", value: "단국대학교 소프트웨어학과 휴학" },
-      ],
-      soma: [
-        {
-          title: "소마에서 얻고 싶은 것",
-          body: "실서비스 개발과 수익화 경험을 통해 기술을 실제 사용자 가치로 연결하는 방법을 배우고 싶어요. 팀 협업과 빠른 실행·검증 과정을 경험하며, 장기적으로는 창업까지 이어질 수 있는 역량을 만들고 싶어요.",
-        },
-        {
-          title: "소마에 사용할 시간",
-          body: "소마에 몰입하기 위해 휴학 중이고, 얼마 전 경기도 용인에서 부산 센터 인근으로 입주했어요. 센터까지 도보 10분이라 프로젝트와 협업에 우선순위를 두고 시간을 집중적으로 사용할 수 있어요.",
-        },
-      ],
-      careers: [],
-      projects: [
-        {
-          title: "THAD",
-          body: "Talking Head AI Detector. AI로 생성된 talking head 영상을 탐지하는 프로젝트예요.",
-        },
-      ],
-      awards: [],
-      education:
-        "단국대학교 경제학과 · 2024.03 - 2024.12 / 단국대학교 소프트웨어학과 · 2025.03 - 2025.12",
-    },
-  },
   {
     name: "박준이",
     role: "AI Service Builder",
@@ -88,6 +51,8 @@ const teamMembers: TeamMember[] = [
         { label: "나이", value: "25세" },
         { label: "학력", value: "부산대학교, 2027년 2월 졸업 예정" },
       ],
+      notionUrl:
+        "https://www.notion.so/34ca01badc2180748d0fffd0df4aa2de?source=copy_link",
       soma: [
         {
           title: "소마에서 얻고 싶은 것",
@@ -138,6 +103,46 @@ const teamMembers: TeamMember[] = [
     },
   },
   {
+    name: "김상호",
+    role: "Backend Precision",
+    initials: "KS",
+    photo: "/team/kim-sangho.jpg",
+    oneLine: "데이터 흐름과 예외를 차분히 따라가며, 작은 불안정성을 놓치지 않아요.",
+    competencies: ["정교함", "데이터 흐름", "예외 처리", "안정성"],
+    detail: {
+      lead: "데이터가 오가는 길, 조건이 갈라지는 순간, 겉으로 잘 보이지 않는 예외를 꼼꼼히 챙겨요.",
+    },
+    selfIntro: {
+      basics: [
+        { label: "이름", value: "김상호" },
+        { label: "나이", value: "23살" },
+        { label: "학력", value: "단국대학교 소프트웨어학과 휴학" },
+      ],
+      notionUrl:
+        "https://www.notion.so/351a01badc21808984d4c80e65ce4529?source=copy_link",
+      soma: [
+        {
+          title: "소마에서 얻고 싶은 것",
+          body: "실서비스 개발과 수익화 경험을 통해 기술을 실제 사용자 가치로 연결하는 방법을 배우고 싶어요. 팀 협업과 빠른 실행·검증 과정을 경험하며, 장기적으로는 창업까지 이어질 수 있는 역량을 만들고 싶어요.",
+        },
+        {
+          title: "소마에 사용할 시간",
+          body: "소마에 몰입하기 위해 휴학 중이고, 얼마 전 경기도 용인에서 부산 센터 인근으로 입주했어요. 센터까지 도보 10분이라 프로젝트와 협업에 우선순위를 두고 시간을 집중적으로 사용할 수 있어요.",
+        },
+      ],
+      careers: [],
+      projects: [
+        {
+          title: "THAD",
+          body: "Talking Head AI Detector. AI로 생성된 talking head 영상을 탐지하는 프로젝트예요.",
+        },
+      ],
+      awards: [],
+      education:
+        "단국대학교 경제학과 · 2024.03 - 2024.12 / 단국대학교 소프트웨어학과 · 2025.03 - 2025.12",
+    },
+  },
+  {
     name: "김동인",
     role: "Backend Diplomat",
     initials: "KD",
@@ -153,6 +158,8 @@ const teamMembers: TeamMember[] = [
         { label: "나이", value: "24살" },
         { label: "학력", value: "부산대학교 정보컴퓨터공학부 졸업" },
       ],
+      notionUrl:
+        "https://www.notion.so/34da01badc21808595b7c0447f4808ba?source=copy_link",
       soma: [
         {
           title: "소마에서 얻고 싶은 것",
@@ -211,7 +218,7 @@ export function TeamSection() {
           </div>
           <div>
             <h2 className="max-w-none text-4xl font-black leading-tight sm:text-5xl lg:whitespace-nowrap lg:text-[3rem]">
-              사용자 만족? 묻고 매출로 가
+              Impossible is Nothing, 불가능은 없다.
             </h2>
           </div>
         </div>
@@ -309,6 +316,8 @@ function SelfIntroContent({
         ))}
       </div>
 
+      {intro.notionUrl ? <NotionIntroLink href={intro.notionUrl} /> : null}
+
       <IntroGroup title="SOMA에서">
         {intro.soma.map((item) => (
           <IntroItem key={item.title} title={item.title} body={item.body} />
@@ -355,6 +364,30 @@ function SelfIntroContent({
         <p className="text-sm leading-6 text-[var(--muted-ink)]">{intro.education}</p>
       </IntroGroup>
     </div>
+  );
+}
+
+function NotionIntroLink({ href }: { href: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group mt-4 flex items-center justify-between gap-4 border-y border-[var(--line-strong)] px-4 py-4 transition-colors hover:bg-[var(--paper-deep)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--moss)]"
+      aria-label="Notion 자기소개 원문 열기"
+    >
+      <span>
+        <span className="moss-display text-2xl leading-none text-[var(--moss)]">
+          Notion
+        </span>
+        <span className="mt-1 block text-base font-black leading-tight">
+          자기소개 원문 보기
+        </span>
+      </span>
+      <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-[8px] border border-[var(--line-strong)] text-[var(--moss)] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+        <ArrowUpRight aria-hidden="true" className="size-4" />
+      </span>
+    </a>
   );
 }
 
