@@ -79,7 +79,7 @@ export function TeamSection() {
           </div>
           <div>
             <h2 className="max-w-none text-4xl font-black leading-tight sm:text-5xl lg:whitespace-nowrap lg:text-[3rem]">
-              사용자는 가볍게, 우리는 집요하게 만들어요.
+              사용자 만족? 묻고 매출로 가
             </h2>
           </div>
         </div>
