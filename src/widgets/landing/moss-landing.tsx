@@ -64,10 +64,7 @@ export function MossLandingPage() {
             <h1 className="moss-display text-8xl leading-none sm:text-9xl lg:text-[10rem]">
               Moss
             </h1>
-            <p className="mt-7 max-w-xl text-xl font-medium leading-9 text-[var(--muted-ink)] sm:text-2xl sm:leading-10">
-              귀찮음은 끝까지 줄이고, 작은 순간은 오래 남게 만드는 팀이에요.
-            </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button
                 asChild
                 size="lg"
