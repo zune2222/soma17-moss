@@ -46,7 +46,7 @@ const teamMembers: TeamMember[] = [
     selfIntro: {
       basics: [
         { label: "이름", value: "박준이" },
-        { label: "나이", value: "24세" },
+        { label: "나이", value: "25세" },
         { label: "학력", value: "부산대학교, 2027년 2월 졸업 예정" },
       ],
       soma: [
@@ -56,7 +56,7 @@ const teamMembers: TeamMember[] = [
         },
         {
           title: "소마에 사용할 시간",
-          body: "제품 검증, 개발, 사용자 유치에 시간을 우선 배치하고 빠르게 만들고 반응을 보며 고칠게요.",
+          body: "4학년 재학 중이지만 2학기 수업이 거의 없어 소마에 많은 시간을 할애할 수 있어요.",
         },
       ],
       careers: [
@@ -219,8 +219,8 @@ export function TeamSection() {
                   </div>
                 </button>
               </DialogTrigger>
-              <DialogContent>
-                <div className="grid max-h-[calc(100svh-2rem)] overflow-y-auto lg:grid-cols-[0.9fr_1.1fr]">
+              <DialogContent className="lg:max-w-[1120px] xl:max-w-[1200px]">
+                <div className="grid max-h-[calc(100svh-2rem)] overflow-y-auto lg:grid-cols-[340px_minmax(0,1fr)] xl:grid-cols-[380px_minmax(0,1fr)]">
                   <div className="border-b border-[var(--line-strong)] p-5 lg:border-r lg:border-b-0">
                     <MemberPhoto member={member} large />
                   </div>
